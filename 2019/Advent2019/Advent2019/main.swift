@@ -3,5 +3,6 @@
 
 import Foundation
 
+print(String(day1a(input(1))))
 print(String(day1b(input(1))))
 

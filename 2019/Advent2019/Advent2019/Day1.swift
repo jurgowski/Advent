@@ -5,19 +5,21 @@ import Foundation
 
 func day1a(_ input: String) -> Int {
     let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
-    return masses.map(_fuel(mass:)).reduce(0, +)
+    return masses
+        .compactMap(_fuel(mass:))
+        .reduce(0, +)
 }
 
 func day1b(_ input: String) -> Int {
-    var masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
-    var totalFuel = 0
-    while masses.count > 0 {
-        masses = masses.map(_fuel(mass:)).filter {$0 > 0}
-        totalFuel += masses.reduce(0, +)
-    }
-    return totalFuel
+    let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
+    return masses
+        .compactMap(_fuel(mass:))
+        .compactMap({
+            sequence(first: $0, next:_fuel(mass:)).reduce(0, +)
+        })
+        .reduce(0, +)
 }
 
-private func _fuel(mass: Int) -> Int {
-    return (mass / 3) - 2
+private func _fuel(mass: Int) -> Int? {
+    return mass < 6 ? nil : (mass / 3) - 2
 }
