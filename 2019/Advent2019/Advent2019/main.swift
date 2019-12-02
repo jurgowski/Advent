@@ -3,6 +3,6 @@
 
 import Foundation
 
-print(String(day1a(input(1))))
-print(String(day1b(input(1))))
+//print(day2a(input(2)))
+print(day2b(input(2)))
 
