@@ -29,19 +29,19 @@ func day2b(_ input: String) -> Int {
 }
 
 private func _run(_ program: [Int], _ noun: Int, _ verb: Int) -> Int {
-    var ops = program
-    ops[1] = noun
-    ops[2] = verb
+    var mem = program
+    mem[1] = noun
+    mem[2] = verb
 
     var i = 0
-    while ops[i] != 99 {
-        switch ops[i] {
-        case 1: ops[ops[i+3]] = ops[ops[i+1]] + ops[ops[i+2]]
-        case 2: ops[ops[i+3]] = ops[ops[i+1]] * ops[ops[i+2]]
+    while mem[i] != 99 {
+        switch mem[i] {
+        case 1: mem[mem[i+3]] = mem[mem[i+1]] + mem[mem[i+2]]
+        case 2: mem[mem[i+3]] = mem[mem[i+1]] * mem[mem[i+2]]
         default: fatalError()
         }
         i += 4
     }
 
-    return ops[0]
+    return mem[0]
 }
