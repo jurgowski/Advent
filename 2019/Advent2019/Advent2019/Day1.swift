@@ -4,22 +4,24 @@
 import Foundation
 
 func day1a(_ input: String) -> Int {
-    let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
-    return masses
-        .compactMap(_fuel(mass:))
+    return input
+        .components(separatedBy: CharacterSet.newlines)
+        .compactMap { Int($0) }
+        .compactMap(_fuel)
         .reduce(0, +)
 }
 
 func day1b(_ input: String) -> Int {
-    let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
-    return masses
-        .compactMap(_fuel(mass:))
+    return input
+        .components(separatedBy: CharacterSet.newlines)
+        .compactMap { Int($0) }
+        .compactMap(_fuel)
         .compactMap({
-            sequence(first: $0, next:_fuel(mass:)).reduce(0, +)
+            sequence(first: $0, next:_fuel).reduce(0, +)
         })
         .reduce(0, +)
 }
 
-private func _fuel(mass: Int) -> Int? {
+private func _fuel(_ mass: Int) -> Int? {
     return mass < 6 ? nil : (mass / 3) - 2
 }
