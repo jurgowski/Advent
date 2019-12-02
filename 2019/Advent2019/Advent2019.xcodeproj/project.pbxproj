@@ -10,6 +10,10 @@
 		DC8DA9F0239499E4001A1FFB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DA9EF239499E4001A1FFB /* main.swift */; };
 		DC8DA9F723949A08001A1FFB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DA9F623949A08001A1FFB /* Helpers.swift */; };
 		DC8DA9FB23949ABB001A1FFB /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DA9FA23949ABB001A1FFB /* Day1.swift */; };
+		DC8DA9FD2394CBCE001A1FFB /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DA9FC2394CBCE001A1FFB /* Day2.swift */; };
+		DC8DA9FF2394CC25001A1FFB /* Day3.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DA9FE2394CC25001A1FFB /* Day3.swift */; };
+		DC8DAA012394CC41001A1FFB /* Day4.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DAA002394CC41001A1FFB /* Day4.swift */; };
+		DC8DAA032394CC50001A1FFB /* Day5.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DAA022394CC50001A1FFB /* Day5.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +34,12 @@
 		DC8DA9F623949A08001A1FFB /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		DC8DA9F923949A5F001A1FFB /* 01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 01.txt; sourceTree = "<group>"; };
 		DC8DA9FA23949ABB001A1FFB /* Day1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day1.swift; sourceTree = "<group>"; };
+		DC8DA9FC2394CBCE001A1FFB /* Day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2.swift; sourceTree = "<group>"; };
+		DC8DA9FE2394CC25001A1FFB /* Day3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day3.swift; sourceTree = "<group>"; };
+		DC8DAA002394CC41001A1FFB /* Day4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4.swift; sourceTree = "<group>"; };
+		DC8DAA022394CC50001A1FFB /* Day5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5.swift; sourceTree = "<group>"; };
+		DC8DAA042394D2EF001A1FFB /* 02.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 02.txt; sourceTree = "<group>"; };
+		DC8DAA052394D570001A1FFB /* test.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +76,10 @@
 				DC8DA9EF239499E4001A1FFB /* main.swift */,
 				DC8DA9F623949A08001A1FFB /* Helpers.swift */,
 				DC8DA9FA23949ABB001A1FFB /* Day1.swift */,
+				DC8DA9FC2394CBCE001A1FFB /* Day2.swift */,
+				DC8DA9FE2394CC25001A1FFB /* Day3.swift */,
+				DC8DAA002394CC41001A1FFB /* Day4.swift */,
+				DC8DAA022394CC50001A1FFB /* Day5.swift */,
 			);
 			path = Advent2019;
 			sourceTree = "<group>";
@@ -74,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				DC8DA9F923949A5F001A1FFB /* 01.txt */,
+				DC8DAA042394D2EF001A1FFB /* 02.txt */,
+				DC8DAA052394D570001A1FFB /* test.txt */,
 			);
 			name = Inputs;
 			path = ../Inputs;
@@ -138,6 +154,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC8DA9F0239499E4001A1FFB /* main.swift in Sources */,
+				DC8DAA032394CC50001A1FFB /* Day5.swift in Sources */,
+				DC8DAA012394CC41001A1FFB /* Day4.swift in Sources */,
+				DC8DA9FF2394CC25001A1FFB /* Day3.swift in Sources */,
+				DC8DA9FD2394CBCE001A1FFB /* Day2.swift in Sources */,
 				DC8DA9FB23949ABB001A1FFB /* Day1.swift in Sources */,
 				DC8DA9F723949A08001A1FFB /* Helpers.swift in Sources */,
 			);

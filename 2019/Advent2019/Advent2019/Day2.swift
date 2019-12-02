@@ -11,6 +11,7 @@ func day2a(_ input: String) -> Int {
     return _run(program, 12, 2)
 }
 
+//(368640 * a) + 152702 + b
 func day2b(_ input: String) -> Int {
     let program = input
         .components(separatedBy: ",")
