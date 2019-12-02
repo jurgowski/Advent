@@ -1,5 +1,5 @@
-//  Created by Krys Jurgowski on 12/2/18.
-//  Copyright © 2018 United States. All rights reserved.
+//  Created by Krys Jurgowski on 12/1/19.
+//  Copyright © 2019 United States. All rights reserved.
 
 import Foundation
 
@@ -9,7 +9,7 @@ func input(_ day: Int, _ test: Bool = false) -> String {
         .appendingPathComponent("Developer")
         .appendingPathComponent("krys_repos")
         .appendingPathComponent("Advent")
-        .appendingPathComponent("2018")
+        .appendingPathComponent("2019")
         .appendingPathComponent("Inputs")
     let fileURL = inputPath
         .appendingPathComponent(test ? "test" : String(format: "%02d", day))

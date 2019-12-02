@@ -54,6 +54,31 @@
 		DC3BFB1421B42C82002089AE /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		DC3BFB1721B42DAC002089AE /* Day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2.swift; sourceTree = "<group>"; };
 		DC3BFB1921B42DE8002089AE /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		DC8DA9C923944857001A1FFB /* 15.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 15.txt; sourceTree = "<group>"; };
+		DC8DA9CA23944857001A1FFB /* 01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 01.txt; sourceTree = "<group>"; };
+		DC8DA9CB23944857001A1FFB /* 02.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 02.txt; sourceTree = "<group>"; };
+		DC8DA9CC23944857001A1FFB /* 16.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 16.txt; sourceTree = "<group>"; };
+		DC8DA9CD23944857001A1FFB /* 17.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 17.txt; sourceTree = "<group>"; };
+		DC8DA9CE23944857001A1FFB /* 03.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 03.txt; sourceTree = "<group>"; };
+		DC8DA9CF23944857001A1FFB /* 07.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 07.txt; sourceTree = "<group>"; };
+		DC8DA9D023944857001A1FFB /* 13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 13.txt; sourceTree = "<group>"; };
+		DC8DA9D123944857001A1FFB /* 12.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 12.txt; sourceTree = "<group>"; };
+		DC8DA9D223944857001A1FFB /* 06.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 06.txt; sourceTree = "<group>"; };
+		DC8DA9D323944857001A1FFB /* 10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 10.txt; sourceTree = "<group>"; };
+		DC8DA9D423944857001A1FFB /* 04.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 04.txt; sourceTree = "<group>"; };
+		DC8DA9D523944857001A1FFB /* 05.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 05.txt; sourceTree = "<group>"; };
+		DC8DA9D623944857001A1FFB /* day 18.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "day 18.txt"; sourceTree = "<group>"; };
+		DC8DA9D723944857001A1FFB /* day 19.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "day 19.txt"; sourceTree = "<group>"; };
+		DC8DA9D823944857001A1FFB /* day 20.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "day 20.txt"; sourceTree = "<group>"; };
+		DC8DA9D923944857001A1FFB /* day 16.patch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "day 16.patch"; sourceTree = "<group>"; };
+		DC8DA9DA23944857001A1FFB /* 97.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 97.txt; sourceTree = "<group>"; };
+		DC8DA9DB23944857001A1FFB /* day 15.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "day 15.txt"; sourceTree = "<group>"; };
+		DC8DA9DC23944857001A1FFB /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		DC8DA9DD23944857001A1FFB /* 08.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 08.txt; sourceTree = "<group>"; };
+		DC8DA9DE23944857001A1FFB /* 20.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 20.txt; sourceTree = "<group>"; };
+		DC8DA9DF23944857001A1FFB /* 09.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 09.txt; sourceTree = "<group>"; };
+		DC8DA9E023944857001A1FFB /* 19.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 19.txt; sourceTree = "<group>"; };
+		DC8DA9E123944857001A1FFB /* 18.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 18.txt; sourceTree = "<group>"; };
 		DC90B4AA21C0CCAB007D410F /* Day12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day12.swift; sourceTree = "<group>"; };
 		DC90B4AC21C5DCD8007D410F /* Day13.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day13.swift; sourceTree = "<group>"; };
 		DC90B4AE21C6E6BC007D410F /* Day14.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day14.swift; sourceTree = "<group>"; };
@@ -80,6 +105,7 @@
 		DC3BFAFD21B42070002089AE = {
 			isa = PBXGroup;
 			children = (
+				DC8DA9C823944857001A1FFB /* Inputs */,
 				DC3BFB0821B42070002089AE /* Advent2018 */,
 				DC3BFB0721B42070002089AE /* Products */,
 			);
@@ -127,6 +153,38 @@
 				DCE21E9221CDECF10091AF2D /* Day20.swift */,
 			);
 			path = Days;
+			sourceTree = "<group>";
+		};
+		DC8DA9C823944857001A1FFB /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				DC8DA9C923944857001A1FFB /* 15.txt */,
+				DC8DA9CA23944857001A1FFB /* 01.txt */,
+				DC8DA9CB23944857001A1FFB /* 02.txt */,
+				DC8DA9CC23944857001A1FFB /* 16.txt */,
+				DC8DA9CD23944857001A1FFB /* 17.txt */,
+				DC8DA9CE23944857001A1FFB /* 03.txt */,
+				DC8DA9CF23944857001A1FFB /* 07.txt */,
+				DC8DA9D023944857001A1FFB /* 13.txt */,
+				DC8DA9D123944857001A1FFB /* 12.txt */,
+				DC8DA9D223944857001A1FFB /* 06.txt */,
+				DC8DA9D323944857001A1FFB /* 10.txt */,
+				DC8DA9D423944857001A1FFB /* 04.txt */,
+				DC8DA9D523944857001A1FFB /* 05.txt */,
+				DC8DA9D623944857001A1FFB /* day 18.txt */,
+				DC8DA9D723944857001A1FFB /* day 19.txt */,
+				DC8DA9D823944857001A1FFB /* day 20.txt */,
+				DC8DA9D923944857001A1FFB /* day 16.patch */,
+				DC8DA9DA23944857001A1FFB /* 97.txt */,
+				DC8DA9DB23944857001A1FFB /* day 15.txt */,
+				DC8DA9DC23944857001A1FFB /* test.txt */,
+				DC8DA9DD23944857001A1FFB /* 08.txt */,
+				DC8DA9DE23944857001A1FFB /* 20.txt */,
+				DC8DA9DF23944857001A1FFB /* 09.txt */,
+				DC8DA9E023944857001A1FFB /* 19.txt */,
+				DC8DA9E123944857001A1FFB /* 18.txt */,
+			);
+			path = Inputs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
