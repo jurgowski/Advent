@@ -3,26 +3,24 @@
 
 import Foundation
 
-func day1a(_ input: String) -> String {
+func day1a(_ input: String) -> Int {
     let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
-    let totalFuel = masses.reduce(0) { (currentFuel, mass) -> Int in
+    return masses.reduce(0) { (currentFuel, mass) -> Int in
         return currentFuel + _fuel(mass: mass)
     }
-    return "\(totalFuel)"
 }
 
-func day1b(_ input: String) -> String {
+func day1b(_ input: String) -> Int {
     let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
-    let totalFuel = masses.reduce(0) { (currentFuel, mass) -> Int in
-        var fuel = _fuel(mass: mass)
+    return masses.reduce(0) { (currentFuel, mass) -> Int in
         var fuelSum = 0
+        var fuel = _fuel(mass: mass)
         while fuel > 0 {
             fuelSum += fuel
             fuel = _fuel(mass: fuel)
         }
         return currentFuel + fuelSum
     }
-    return "\(totalFuel)"
 }
 
 private func _fuel(mass: Int) -> Int {

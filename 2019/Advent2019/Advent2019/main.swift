@@ -3,5 +3,5 @@
 
 import Foundation
 
-print(day1a(input(1)))
+print(String(day1a(input(1))))
 
