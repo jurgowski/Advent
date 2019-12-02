@@ -5,22 +5,17 @@ import Foundation
 
 func day1a(_ input: String) -> Int {
     let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
-    return masses.reduce(0) { (currentFuel, mass) -> Int in
-        return currentFuel + _fuel(mass: mass)
-    }
+    return masses.map(_fuel(mass:)).reduce(0, +)
 }
 
 func day1b(_ input: String) -> Int {
-    let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
-    return masses.reduce(0) { (currentFuel, mass) -> Int in
-        var fuelSum = 0
-        var fuel = _fuel(mass: mass)
-        while fuel > 0 {
-            fuelSum += fuel
-            fuel = _fuel(mass: fuel)
-        }
-        return currentFuel + fuelSum
+    var masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
+    var totalFuel = 0
+    while masses.count > 0 {
+        masses = masses.map(_fuel(mass:)).filter {$0 > 0}
+        totalFuel += masses.reduce(0, +)
     }
+    return totalFuel
 }
 
 private func _fuel(mass: Int) -> Int {
