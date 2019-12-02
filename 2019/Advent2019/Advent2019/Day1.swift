@@ -6,7 +6,7 @@ import Foundation
 func day1a(_ input: String) -> String {
     let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
     let totalFuel = masses.reduce(0) { (currentFuel, mass) -> Int in
-        return currentFuel + (mass / 3) - 2
+        return currentFuel + _fuel(mass: mass)
     }
     return "\(totalFuel)"
 }
@@ -14,13 +14,17 @@ func day1a(_ input: String) -> String {
 func day1b(_ input: String) -> String {
     let masses = input.components(separatedBy: CharacterSet.newlines).map { Int($0)! }
     let totalFuel = masses.reduce(0) { (currentFuel, mass) -> Int in
-        var fuel = (mass / 3) - 2
+        var fuel = _fuel(mass: mass)
         var fuelSum = 0
         while fuel > 0 {
             fuelSum += fuel
-            fuel = (fuel / 3) - 2
+            fuel = _fuel(mass: fuel)
         }
         return currentFuel + fuelSum
     }
     return "\(totalFuel)"
+}
+
+private func _fuel(mass: Int) -> Int {
+    return (mass / 3) - 2
 }
