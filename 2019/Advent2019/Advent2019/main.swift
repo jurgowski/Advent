@@ -3,6 +3,6 @@
 
 import Foundation
 
-//print(day2a(input(2)))
-print(day2b(input(2)))
+print(day3b(input(3)))
+//print(day3b(input(3)))
 

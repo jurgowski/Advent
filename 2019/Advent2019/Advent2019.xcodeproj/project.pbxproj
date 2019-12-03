@@ -40,6 +40,7 @@
 		DC8DAA022394CC50001A1FFB /* Day5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5.swift; sourceTree = "<group>"; };
 		DC8DAA042394D2EF001A1FFB /* 02.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 02.txt; sourceTree = "<group>"; };
 		DC8DAA052394D570001A1FFB /* test.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		DCE5F16B239622FB000A8B92 /* 03.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 03.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +88,10 @@
 		DC8DA9F823949A5F001A1FFB /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
+				DC8DAA052394D570001A1FFB /* test.txt */,
 				DC8DA9F923949A5F001A1FFB /* 01.txt */,
 				DC8DAA042394D2EF001A1FFB /* 02.txt */,
-				DC8DAA052394D570001A1FFB /* test.txt */,
+				DCE5F16B239622FB000A8B92 /* 03.txt */,
 			);
 			name = Inputs;
 			path = ../Inputs;
@@ -282,6 +284,7 @@
 		DC8DA9F4239499E4001A1FFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EGM85S4GH9;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -293,6 +296,7 @@
 		DC8DA9F5239499E4001A1FFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EGM85S4GH9;
 				ENABLE_HARDENED_RUNTIME = YES;
