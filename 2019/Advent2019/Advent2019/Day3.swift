@@ -21,7 +21,7 @@ func day3b(_ input: String) -> Int {
     let wireMap1 = _wireMap(wire: wires[0])
     let wireMap2 = _wireMap(wire: wires[1])
     return Set(wireMap1.keys).intersection(Set(wireMap2.keys))
-        .map { wireMap1[$0]! + wireMap2[$0]! }.min()!
+        .map { wireMap1[$0]! + wireMap2[$0]! }.min() ?? 0
 }
 
 private func _wireMap(wire: String) -> [Point:Int] {
