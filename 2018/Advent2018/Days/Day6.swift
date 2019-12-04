@@ -45,7 +45,7 @@ func day6b(_ input: String) -> String {
     return "\(spots)"
 }
 
-struct Position {
+fileprivate struct Position {
     static var index: Int = 0
     let id: Int
     let x: Int
