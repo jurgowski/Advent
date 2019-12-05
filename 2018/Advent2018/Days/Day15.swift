@@ -14,13 +14,14 @@ fileprivate struct Position: Hashable, Comparable {
 
 fileprivate class Unit: CustomDebugStringConvertible {
     var pos: Position
-    let attack = 3
+    let attack: Int
     var hp = 200
     let type: Character
 
-    init(position: Position, type: Character) {
+    init(position: Position, type: Character, attack: Int) {
         self.pos = position
         self.type = type
+        self.attack = attack
     }
 
     var debugDescription: String {
@@ -30,10 +31,31 @@ fileprivate class Unit: CustomDebugStringConvertible {
     var dead: Bool { hp <= 0 }
 }
 
+//184470 Too High
 func day15a(_ input: String) -> Int {
     let columns = input.components(separatedBy: CharacterSet.newlines)
-    var grid = columns.map { Array($0) }
-    var units = _makeUnits(grid: grid)
+    let result = _executeCombat(columns.map { Array($0) }, elfPower: 3)
+    return result.0.map { $0.hp }.reduce(0, +) * (result.1)
+}
+
+func day15b(_ input: String) -> Int {
+    let columns = input.components(separatedBy: CharacterSet.newlines)
+    let map = columns.map { Array($0) }
+    let elfCount = map.reduce(0) { $0 + $1.reduce(0) { $0 + ($1 == "E" ? 1 : 0) }}
+    var elfSurvived = 0
+    var elfPower = 3
+    var result : ([Unit], Int)
+    repeat {
+        elfPower += 1
+        result = _executeCombat(map, elfPower: elfPower)
+        elfSurvived = result.0.filter { $0.type == "E" }.count
+    } while elfCount > elfSurvived
+    return result.0.map { $0.hp }.reduce(0, +) * (result.1)
+}
+
+private func _executeCombat(_ map: [[Character]], elfPower: Int) -> ([Unit], Int) {
+    var grid = map
+    var units = _makeUnits(grid: grid, elfPower: elfPower)
 
     var rounds = 0
     var combat = true
@@ -63,14 +85,10 @@ func day15a(_ input: String) -> Int {
             rounds += 1
         }
     }
-    return units.map { $0.hp }.reduce(0, +) * (rounds)
+    return (units, rounds)
 }
 
-func day15b(_ input: String) -> String {
-    return ""
-}
-
-private func _makeUnits(grid: [[Character]]) -> [Unit] {
+private func _makeUnits(grid: [[Character]], elfPower: Int) -> [Unit] {
     return grid
         .enumerated()
         .flatMap { row -> [(Position, Character)] in
@@ -78,7 +96,7 @@ private func _makeUnits(grid: [[Character]]) -> [Unit] {
                 (Position(x: element.0, y: row.offset), element.1)
             }}
         .filter { $0.1 == "G" || $0.1 == "E" }
-        .map { Unit(position: $0.0, type: $0.1) }
+        .map { Unit(position: $0.0, type: $0.1, attack: $0.1 == "E" ? elfPower : 3) }
 }
 
 private func _enemies(_ unit: Unit, units: [Unit]) -> [Unit] {
@@ -92,7 +110,7 @@ private func _attackPositions(enemies: [Unit], grid: [[Character]]) -> [Position
     return enemies
         .flatMap { _adjPositions($0.pos) }
         .filter { _read(grid, pos:$0) == "." }
-        .sorted()
+        .sorted { $0 < $1 }
 }
 
 private func _targetEnemy(unit: Unit, enemies:[Unit]) -> Unit? {
@@ -133,6 +151,7 @@ private func _nearestTarget(_ position: Position, _ grid: [[Character]], _ targe
         nextPositions.forEach { distances[$0] = distance }
         nearestTarget = targets
             .filter { nextPositions.contains($0) }
+            .sorted { $0 < $1 }
             .first
     }
 
