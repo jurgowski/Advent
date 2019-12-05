@@ -8,10 +8,7 @@ fileprivate struct Position: Hashable, Comparable {
     let y: Int
 
     static func < (l: Position, r: Position) -> Bool {
-        if l.y == r.y {
-            return l.x < r.x
-        }
-        return l.y < r.y
+        return l.y == r.y ? l.x < r.x : l.y < r.y
     }
 }
 
@@ -29,36 +26,44 @@ fileprivate class Unit: CustomDebugStringConvertible {
     var debugDescription: String {
         return "\(type) @ x:\(pos.x), y:\(pos.y) - \(hp))"
     }
+
+    var dead: Bool { hp <= 0 }
 }
 
-func day15a(_ input: String) -> String {
+func day15a(_ input: String) -> Int {
     let columns = input.components(separatedBy: CharacterSet.newlines)
     var grid = columns.map { Array($0) }
     var units = _makeUnits(grid: grid)
 
-
-    var round = 0
+    var rounds = 0
     var combat = true
 
     while combat {
-        round += 1
-        // Attack Order
-        units.sort { $0.pos < $1.pos }
-
+        units.sort { $0.pos < $1.pos } // Turn Order
         units.forEach { unit in
+            guard combat else { return }
+            guard !unit.dead else { return }
             let enemies = _enemies(unit, units: units)
-            if enemies.count == 0 {
-                combat = false
-                return
+            guard enemies.count > 0 else { combat = false; return }
+
+            if let targetEnemy = _targetEnemy(unit: unit, enemies: enemies) {
+                _attack(unit: unit, enemy: targetEnemy, grid: &grid)
+            } else {
+                let attackPositions = _attackPositions(enemies: enemies, grid: grid)
+                guard let targetPosition = _nearestTarget(unit.pos, grid, attackPositions) else { return }
+                guard let targetNextPosition = _nearestTarget(targetPosition, grid, _adjPositions(unit.pos)) else { fatalError() }
+                _move(unit: unit, grid: &grid, position: targetNextPosition)
+                if let targetEnemy = _targetEnemy(unit: unit, enemies: enemies) {
+                    _attack(unit: unit, enemy: targetEnemy, grid: &grid)
+                }
             }
-            let attackPositions = _attackPositions(enemies: enemies, grid: grid)
+        }
+        units.removeAll { $0.dead }
+        if combat {
+            rounds += 1
         }
     }
-
-
-
-
-    return ""
+    return units.map { $0.hp }.reduce(0, +) * (rounds)
 }
 
 func day15b(_ input: String) -> String {
@@ -66,37 +71,91 @@ func day15b(_ input: String) -> String {
 }
 
 private func _makeUnits(grid: [[Character]]) -> [Unit] {
-    var units = [Unit]()
-    grid.enumerated().forEach { (row) in
-        row.element.enumerated().forEach { (square) in
-            switch square.element {
-            case "G", "E": units.append(Unit(position: Position(x: square.offset, y: row.offset),
-                                             type: square.element))
-            default: break
-            }
-        }
-    }
-    return units
+    return grid
+        .enumerated()
+        .flatMap { row -> [(Position, Character)] in
+            row.element.enumerated().map { element -> (Position, Character) in
+                (Position(x: element.0, y: row.offset), element.1)
+            }}
+        .filter { $0.1 == "G" || $0.1 == "E" }
+        .map { Unit(position: $0.0, type: $0.1) }
 }
 
 private func _enemies(_ unit: Unit, units: [Unit]) -> [Unit] {
-    return units.filter { enemy -> Bool in
-        return unit.type != enemy.type
+    return units
+        .filter { unit.type != $0.type }
+        .filter { !$0.dead }
+        .sorted { $0.pos < $1.pos }
+}
+
+private func _attackPositions(enemies: [Unit], grid: [[Character]]) -> [Position] {
+    return enemies
+        .flatMap { _adjPositions($0.pos) }
+        .filter { _read(grid, pos:$0) == "." }
+        .sorted()
+}
+
+private func _targetEnemy(unit: Unit, enemies:[Unit]) -> Unit? {
+    return _adjPositions(unit.pos)
+        .compactMap { pos in enemies.filter { $0.pos == pos }.first }
+        .sorted { $0.hp == $1.hp ? $0.pos < $1.pos : $0.hp < $1.hp }
+        .first
+}
+
+private func _read(_ grid: [[Character]], pos:Position) -> Character {
+    return grid[pos.y][pos.x]
+}
+
+private func _adjPositions(_ pos: Position) -> [Position] {
+    return [
+        Position(x: pos.x + 1, y: pos.y),
+        Position(x: pos.x - 1, y: pos.y),
+        Position(x: pos.x, y: pos.y + 1),
+        Position(x: pos.x, y: pos.y - 1),
+    ]
+}
+
+private func _nearestTarget(_ position: Position, _ grid: [[Character]], _ targets: [Position]) -> Position? {
+    var distances = [position: 0]
+    var distance = 0
+    var nearestTarget = targets.filter { position == $0 }.first
+
+    while nearestTarget == nil {
+        let nextPositions = distances
+            .filter { $0.value == distance }
+            .flatMap { _adjPositions($0.key) }
+            .filter { _read(grid, pos: $0) == "." }
+            .filter { distances[$0] == nil }
+        if nextPositions.count == 0 {
+            break
+        }
+        distance += 1
+        nextPositions.forEach { distances[$0] = distance }
+        nearestTarget = targets
+            .filter { nextPositions.contains($0) }
+            .first
+    }
+
+    return nearestTarget
+}
+
+private func _move(unit: Unit, grid: inout [[Character]], position: Position) {
+    assert(_read(grid, pos: unit.pos) == unit.type)
+    grid[unit.pos.y][unit.pos.x] = "."
+    grid[position.y][position.x] = unit.type
+    unit.pos = position
+}
+
+private func _attack(unit: Unit, enemy: Unit, grid: inout [[Character]]) {
+    assert(!enemy.dead)
+    assert(unit.type != enemy.type)
+    enemy.hp -= unit.attack
+    if enemy.dead {
+        grid[enemy.pos.y][enemy.pos.x] = "."
     }
 }
 
-private func _attackPositions(enemies: [Unit], grid: [[Character]]) -> Set<Position> {
-    var positions = Set<Position>()
-    enemies.forEach { enemy in
-        let insertIfEmpty = { (dx: Int, dy: Int) in
-            if grid[enemy.pos.y+dy][enemy.pos.x+dx] == "." {
-                positions.insert(Position(x: enemy.pos.x+dx, y: enemy.pos.y+dy))
-            }
-        }
-        insertIfEmpty( 1, 0)
-        insertIfEmpty( 0, 1)
-        insertIfEmpty(-1, 0)
-        insertIfEmpty( 0,-1)
-    }
-    return positions
+func _print(grid: [[Character]]) {
+    grid.map { String($0) }
+        .forEach { print($0) }
 }

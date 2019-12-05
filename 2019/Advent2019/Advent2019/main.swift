@@ -3,7 +3,7 @@
 
 import Foundation
 
-let day = 4
+let day = 2
 let test = false
 let first = false
 

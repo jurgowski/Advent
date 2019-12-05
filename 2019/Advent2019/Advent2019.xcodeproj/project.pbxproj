@@ -18,6 +18,7 @@
 		DCE5F17123975D80000A8B92 /* Day6.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE5F16D23975D80000A8B92 /* Day6.swift */; };
 		DCE5F17223975D80000A8B92 /* Day9.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE5F16E23975D80000A8B92 /* Day9.swift */; };
 		DCE5F17323975D80000A8B92 /* Day7.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE5F16F23975D80000A8B92 /* Day7.swift */; };
+		DCE5F1782398DCAF000A8B92 /* Intcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE5F1772398DCAF000A8B92 /* Intcode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +51,8 @@
 		DCE5F16E23975D80000A8B92 /* Day9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day9.swift; sourceTree = "<group>"; };
 		DCE5F16F23975D80000A8B92 /* Day7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day7.swift; sourceTree = "<group>"; };
 		DCE5F1742397751B000A8B92 /* 04.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 04.txt; sourceTree = "<group>"; };
+		DCE5F1762398CBF4000A8B92 /* 05.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 05.txt; sourceTree = "<group>"; };
+		DCE5F1772398DCAF000A8B92 /* Intcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intcode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,7 @@
 				DCE5F16E23975D80000A8B92 /* Day9.swift */,
 				DC8DA9F623949A08001A1FFB /* Helpers.swift */,
 				DC8DA9EF239499E4001A1FFB /* main.swift */,
+				DCE5F1772398DCAF000A8B92 /* Intcode.swift */,
 			);
 			path = Advent2019;
 			sourceTree = "<group>";
@@ -106,6 +110,7 @@
 				DC8DAA042394D2EF001A1FFB /* 02.txt */,
 				DCE5F16B239622FB000A8B92 /* 03.txt */,
 				DCE5F1742397751B000A8B92 /* 04.txt */,
+				DCE5F1762398CBF4000A8B92 /* 05.txt */,
 			);
 			name = Inputs;
 			path = ../Inputs;
@@ -175,6 +180,7 @@
 				DCE5F17023975D80000A8B92 /* Day8.swift in Sources */,
 				DCE5F17323975D80000A8B92 /* Day7.swift in Sources */,
 				DC8DA9FF2394CC25001A1FFB /* Day3.swift in Sources */,
+				DCE5F1782398DCAF000A8B92 /* Intcode.swift in Sources */,
 				DC8DA9FD2394CBCE001A1FFB /* Day2.swift in Sources */,
 				DCE5F17223975D80000A8B92 /* Day9.swift in Sources */,
 				DC8DA9FB23949ABB001A1FFB /* Day1.swift in Sources */,

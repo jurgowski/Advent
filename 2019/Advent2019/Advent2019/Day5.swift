@@ -4,17 +4,17 @@
 import Foundation
 
 func day5a(_ input: String) -> Int {
-    _ = input
-        .components(separatedBy: CharacterSet.newlines)
+    let program = input
+        .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return 0
+    return intcode(program, 1)
 }
 
 func day5b(_ input: String) -> Int {
-    _ = input
-        .components(separatedBy: CharacterSet.newlines)
+    let program = input
+        .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return 0
+    return intcode(program, 5)
 }

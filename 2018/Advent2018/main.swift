@@ -3,4 +3,4 @@
 
 import Foundation
 
-print(day15a(input(15)))
+print(day15a(input(15, true)))
