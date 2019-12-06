@@ -3,23 +3,34 @@
 
 import Foundation
 
-let day = 2
-let test = false
-let first = false
+func run(day: Int, first: Bool, test: Bool) {
+    print("Problem \(day) part \(first ? "a" : "b") \(test ? "(test)" : "")")
+    let str = input(day, test)
+    let any: Any
+    switch day {
+    case 1:  any = first ? day1a(str) : day1b(str)
+    case 2:  any = first ? day2a(str) : day2b(str)
+    case 3:  any = first ? day3a(str) : day3b(str)
+    case 4:  any = first ? day4a(str) : day4b(str)
+    case 5:  any = first ? day5a(str) : day5b(str)
+    case 6:  any = first ? day6a(str) : day6b(str)
+    case 7:  any = first ? day7a(str) : day7b(str)
+    case 8:  any = first ? day8a(str) : day8b(str)
+    case 9:  any = first ? day9a(str) : day9b(str)
+    default: fatalError()
+    }
 
-let dayFunc: (String) -> Any
-switch day {
-case 1:  dayFunc = first ? day1a(_:) : day1b(_:)
-case 2:  dayFunc = first ? day2a(_:) : day2b(_:)
-case 3:  dayFunc = first ? day3a(_:) : day3b(_:)
-case 4:  dayFunc = first ? day4a(_:) : day4b(_:)
-case 5:  dayFunc = first ? day5a(_:) : day5b(_:)
-case 6:  dayFunc = first ? day6a(_:) : day6b(_:)
-case 7:  dayFunc = first ? day7a(_:) : day7b(_:)
-case 8:  dayFunc = first ? day8a(_:) : day8b(_:)
-case 9:  dayFunc = first ? day9a(_:) : day9b(_:)
-default: fatalError()
+    print(any)
 }
 
-print("Problem \(day) part \(first ? "a" : "b") \(test ? "(test)" : "")")
-print(dayFunc(input(day)))
+let day = 4
+
+//run(day: day, first: true, test: true)
+run(day: day, first: true, test: false)
+
+//run(day: day, first: false, test: true)
+run(day: day, first: false, test: false)
+
+
+
+
