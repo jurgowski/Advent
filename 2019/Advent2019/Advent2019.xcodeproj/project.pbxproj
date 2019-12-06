@@ -53,6 +53,7 @@
 		DCE5F1742397751B000A8B92 /* 04.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 04.txt; sourceTree = "<group>"; };
 		DCE5F1762398CBF4000A8B92 /* 05.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 05.txt; sourceTree = "<group>"; };
 		DCE5F1772398DCAF000A8B92 /* Intcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intcode.swift; sourceTree = "<group>"; };
+		DCE5F17B239A1A4C000A8B92 /* 06.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 06.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +112,7 @@
 				DCE5F16B239622FB000A8B92 /* 03.txt */,
 				DCE5F1742397751B000A8B92 /* 04.txt */,
 				DCE5F1762398CBF4000A8B92 /* 05.txt */,
+				DCE5F17B239A1A4C000A8B92 /* 06.txt */,
 			);
 			name = Inputs;
 			path = ../Inputs;

@@ -27,6 +27,7 @@
 		DC9F351F21B793C1001D8B69 /* Day5.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F351E21B793C1001D8B69 /* Day5.swift */; };
 		DC9F352121B8EA74001D8B69 /* Day6.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9F352021B8EA74001D8B69 /* Day6.swift */; };
 		DCE21E9321CDECF10091AF2D /* Day20.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE21E9221CDECF10091AF2D /* Day20.swift */; };
+		DCE5F17A2399DEBD000A8B92 /* Day16.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE5F1792399DEBD000A8B92 /* Day16.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,6 +91,7 @@
 		DC9F352021B8EA74001D8B69 /* Day6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day6.swift; sourceTree = "<group>"; };
 		DCE21E9221CDECF10091AF2D /* Day20.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day20.swift; sourceTree = "<group>"; };
 		DCE5F1752398C0B3000A8B92 /* testBag.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = testBag.txt; sourceTree = "<group>"; };
+		DCE5F1792399DEBD000A8B92 /* Day16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day16.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				DC90B4AC21C5DCD8007D410F /* Day13.swift */,
 				DC90B4AE21C6E6BC007D410F /* Day14.swift */,
 				DC90B4B021C8914C007D410F /* Day15.swift */,
+				DCE5F1792399DEBD000A8B92 /* Day16.swift */,
 				DC90B4B221C8915E007D410F /* Day17.swift */,
 				DCE21E9221CDECF10091AF2D /* Day20.swift */,
 			);
@@ -265,6 +268,7 @@
 				DC9F351D21B6379C001D8B69 /* Day4.swift in Sources */,
 				DC06E32921BA35B8007C0CFC /* Day7.swift in Sources */,
 				DC90B4B121C8914C007D410F /* Day15.swift in Sources */,
+				DCE5F17A2399DEBD000A8B92 /* Day16.swift in Sources */,
 				DC9F351B21B62C23001D8B69 /* Day3.swift in Sources */,
 				DC9F352121B8EA74001D8B69 /* Day6.swift in Sources */,
 				DC3BFB0A21B42070002089AE /* main.swift in Sources */,
