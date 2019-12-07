@@ -41,9 +41,9 @@ private func _split<T>(_ list: [T]) -> (T, [T])? {
     return (first, Array(list.dropFirst()))
 }
 
-private func _between<T>(_ first: T, _ list: [T]) -> [[T]] {
-    guard let (head, tail) = _split(list) else { return [[first]] }
-    return [[first] + list] + _between(first, tail).map { [head] + $0 }
+private func _between<T>(_ item: T, _ list: [T]) -> [[T]] {
+    guard let (first, rest) = _split(list) else { return [[item]] }
+    return [[item] + list] + _between(item, rest).map { [first] + $0 }
 }
 
 private func _permutations<T>(_ list: [T]) -> [[T]] {
