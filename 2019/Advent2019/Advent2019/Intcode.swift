@@ -3,39 +3,57 @@
 
 import Foundation
 
-func intcode(_ program: [Int], _ input:Int = 0) -> Int {
-    var mem = program
+class IntCode {
+    private(set) var terminated = false
 
-    var i = 0
-    var pCount = -1
+    private var i = 0
+    private var mem: [Int]
+    private var inputs = [Int]()
 
-    while mem[i] != 99 {
-        let opCode = mem[i] % 100
-        let paramaters = mem[i] / 100
-        let ps = { (p: Int) in pCount = p }
-        let write = { (p: Int, x:Int) in mem[mem[i+p+1]] = x }
-        let read = { (param: Int) -> Int in
-            let div = (0..<param).reduce(1) { (c, i) -> Int in c * 10 }
-            let mode = (paramaters / div) % 10
-            switch mode {
-            case 0: return mem[mem[i+param+1]]
-            case 1: return mem[i+param+1]
-            default: fatalError()
-            }
-        }
-        switch opCode {
-        case 1: ps(3); write(2, read(0) + read(1))
-        case 2: ps(3); write(2, read(0) * read(1))
-        case 3: ps(1); write(0, input)
-        case 4: ps(1); print("out: \(read(0))")
-        case 5: ps(2); if read(0) != 0 { i = read(1); ps(-1) }
-        case 6: ps(2); if read(0) == 0 { i = read(1); ps(-1) }
-        case 7: ps(3); write(2, read(0) < read(1) ? 1 : 0)
-        case 8: ps(3); write(2, read(0) == read(1) ? 1 : 0)
-        default: fatalError()
-        }
-        i += (pCount + 1)
+    init(program: [Int]) {
+        mem = program
     }
 
-    return mem[0]
+    func queueInput(_ input: Int) -> IntCode {
+        inputs.append(input)
+        return self
+    }
+
+    func run() -> Int {
+        var pCount = -1
+        var output: Int? = nil
+        while mem[i] != 99 && output == nil {
+            let opCode = mem[i] % 100
+            let ps = mem[i] / 100
+            let params = { (p: Int) in pCount = p }
+            switch opCode {
+            case 1: params(3); _write(2, _read(0, ps) + _read(1, ps))
+            case 2: params(3); _write(2, _read(0, ps) * _read(1, ps))
+            case 3: params(1); _write(0, inputs.removeFirst())
+            case 4: params(1); output = _read(0, ps)
+            case 5: params(2); if _read(0, ps) != 0 { i = _read(1, ps); params(-1) }
+            case 6: params(2); if _read(0, ps) == 0 { i = _read(1, ps); params(-1) }
+            case 7: params(3); _write(2, _read(0, ps)  < _read(1, ps) ? 1 : 0)
+            case 8: params(3); _write(2, _read(0, ps) == _read(1, ps) ? 1 : 0)
+            default: fatalError()
+            }
+            i += (pCount + 1)
+        }
+        terminated = mem[i] == 99
+        return output ?? mem[0]
+    }
+
+    private func _write(_ parameter: Int, _ value: Int) {
+        mem[mem[i+parameter+1]] = value
+    }
+
+    private func _read(_ parameter: Int, _ parameters: Int) -> Int {
+        let div = (0..<parameter).reduce(1) { (c, i) -> Int in c * 10 }
+        let mode = (parameters / div) % 10
+        switch mode {
+        case 0: return mem[mem[i+parameter+1]]
+        case 1: return mem[i+parameter+1]
+        default: fatalError()
+        }
+    }
 }

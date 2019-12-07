@@ -10,7 +10,8 @@ func day2a(_ input: String) -> Int {
 
     program[1] = 12
     program[2] = 2
-    return intcode(program)
+
+    return IntCode(program: program).run()
 }
 
 //(368640 * a) + 152702 + b
@@ -23,7 +24,7 @@ func day2b(_ input: String) -> Int {
         for j in 0...100 {
             program[1] = i
             program[2] = j
-            if intcode(program) == 19690720 {
+            if IntCode(program: program).run() == 19690720 {
                 return (i * 100) + j
             }
         }

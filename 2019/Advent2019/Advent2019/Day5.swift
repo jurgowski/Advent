@@ -8,7 +8,9 @@ func day5a(_ input: String) -> Int {
         .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return intcode(program, 1)
+    let machine = IntCode(program: program).queueInput(1)
+    let outputs = sequence(first: machine.run()) { _ in machine.terminated ? nil : machine.run() }
+    return Array(outputs).last ?? 0
 }
 
 func day5b(_ input: String) -> Int {
@@ -16,5 +18,5 @@ func day5b(_ input: String) -> Int {
         .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return intcode(program, 5)
+    return IntCode(program: program).queueInput(5).run()
 }

@@ -23,7 +23,7 @@ func run(day: Int, first: Bool, test: Bool) {
     print(any)
 }
 
-let day = 6
+let day = 7
 
 //run(day: day, first: true, test: true)
 run(day: day, first: true, test: false)
