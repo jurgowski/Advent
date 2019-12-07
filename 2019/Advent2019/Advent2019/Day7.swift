@@ -8,7 +8,7 @@ func day7a(_ input: String) -> Int {
         .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return _permutations([0,1,2,3,4])
+    return _permutations(Array(0...4))
         .reduce(0) {
             (current, signal) -> Int in
             var out = 0
@@ -23,7 +23,7 @@ func day7b(_ input: String) -> Int {
         .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return _permutations([5,6,7,8,9])
+    return _permutations(Array(5...9))
         .reduce(0) {
             (current, signal) -> Int in
             var out = 0
