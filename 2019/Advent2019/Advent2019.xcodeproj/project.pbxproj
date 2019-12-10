@@ -102,10 +102,10 @@
 				DCE5F16F23975D80000A8B92 /* Day7.swift */,
 				DCE5F16C23975D80000A8B92 /* Day8.swift */,
 				DCE5F16E23975D80000A8B92 /* Day9.swift */,
+				DC83F7DE239F4CE90002494E /* Day10.swift */,
 				DC8DA9F623949A08001A1FFB /* Helpers.swift */,
 				DC8DA9EF239499E4001A1FFB /* main.swift */,
 				DCE5F1772398DCAF000A8B92 /* Intcode.swift */,
-				DC83F7DE239F4CE90002494E /* Day10.swift */,
 			);
 			path = Advent2019;
 			sourceTree = "<group>";

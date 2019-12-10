@@ -24,10 +24,9 @@ class IntCode {
         var pCount = -1
         var output: Int? = nil
         while mem[i] != 99 && output == nil {
-            let opCode = mem[i] % 100
             let ps = mem[i] / 100
             let params = { (p: Int) in pCount = p }
-            switch opCode {
+            switch mem[i] % 100 {
             case 1: params(3); _write(2, ps, _read(0, ps) + _read(1, ps))
             case 2: params(3); _write(2, ps, _read(0, ps) * _read(1, ps))
             case 3: params(1); _write(0, ps, inputs.removeFirst())
