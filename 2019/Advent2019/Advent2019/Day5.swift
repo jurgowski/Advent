@@ -3,20 +3,13 @@
 
 import Foundation
 
-func day5a(_ input: String) -> Int {
+func day5(_ input: String) -> (Int, Int) {
     let program = input
         .components(separatedBy: ",")
         .compactMap { Int($0) }
 
     let machine = IntCode(program: program).queueInput(1)
     let outputs = sequence(first: machine.run()) { _ in machine.terminated ? nil : machine.run() }
-    return Array(outputs).last ?? 0
-}
-
-func day5b(_ input: String) -> Int {
-    let program = input
-        .components(separatedBy: ",")
-        .compactMap { Int($0) }
-
-    return IntCode(program: program).queueInput(5).run()
+    return (Array(outputs).last ?? 0,
+            IntCode(program: program).queueInput(5).run())
 }

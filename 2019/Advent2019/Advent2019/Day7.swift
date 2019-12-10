@@ -3,12 +3,12 @@
 
 import Foundation
 
-func day7a(_ input: String) -> Int {
+func day7(_ input: String) -> (Int, Int) {
     let program = input
         .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return _permutations(Array(0...4))
+    let highSingle = _permutations(Array(0...4))
         .reduce(0) {
             (current, signal) -> Int in
             var out = 0
@@ -16,14 +16,8 @@ func day7a(_ input: String) -> Int {
             machines.forEach { out = $0.queueInput(out).run() }
             return current > out ? current : out
         }
-}
 
-func day7b(_ input: String) -> Int {
-    let program = input
-        .components(separatedBy: ",")
-        .compactMap { Int($0) }
-
-    return _permutations(Array(5...9))
+    let highContinuous = _permutations(Array(5...9))
         .reduce(0) {
             (current, signal) -> Int in
             var out = 0
@@ -34,6 +28,8 @@ func day7b(_ input: String) -> Int {
             }
             return current > out ? current : out
     }
+
+    return (highSingle, highContinuous)
 }
 
 private func _split<T>(_ list: [T]) -> (T, [T])? {

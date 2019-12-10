@@ -3,20 +3,15 @@
 
 import Foundation
 
-func day4a(_ input: String) -> Int {
-    let range = input
+func day4(_ input: String) -> (Int, Int) {
+    let ranges = input
         .components(separatedBy: "-")
         .compactMap { Int($0) }
 
-    return (range[0]...range[1]).filter { _hasPair($0) && _continuous($0)}.count
-}
+    let range = (ranges[0]...ranges[1])
 
-func day4b(_ input: String) -> Int {
-    let range = input
-        .components(separatedBy: "-")
-        .compactMap { Int($0) }
-
-    return (range[0]...range[1]).filter { _hasExactPair($0) && _continuous($0)}.count
+    return (range.filter { _hasPair($0) && _continuous($0)}.count,
+            range.filter { _hasExactPair($0) && _continuous($0)}.count)
 }
 
 private func _hasPair(_ num: Int) -> Bool {

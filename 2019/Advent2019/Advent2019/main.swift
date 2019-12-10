@@ -11,10 +11,10 @@ func run(day: Int, first: Bool, test: Bool) {
     case 1:  any = day1(str)
     case 2:  any = day2(str)
     case 3:  any = day3(str)
-    case 4:  any = first ? day4a(str) : day4b(str)
-    case 5:  any = first ? day5a(str) : day5b(str)
-    case 6:  any = first ? day6a(str) : day6b(str)
-    case 7:  any = first ? day7a(str) : day7b(str)
+    case 4:  any = day4(str)
+    case 5:  any = day5(str)
+    case 6:  any = day6(str)
+    case 7:  any = day7(str)
     case 8:  any = first ? day8a(str) : day8b(str)
     case 9:  any = first ? day9a(str) : day9b(str)
     default: fatalError()
@@ -23,13 +23,13 @@ func run(day: Int, first: Bool, test: Bool) {
     print(any)
 }
 
-let day = 3
+let day = 7
 
 //run(day: day, first: true, test: true)
 run(day: day, first: true, test: false)
 
 //run(day: day, first: false, test: true)
-run(day: day, first: false, test: false)
+//run(day: day, first: false, test: false)
 
 
 
