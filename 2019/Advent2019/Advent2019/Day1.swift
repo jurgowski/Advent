@@ -3,21 +3,19 @@
 
 import Foundation
 
-func day1a(_ input: String) -> Int {
-    return input
+func day1(_ input: String) -> (Int, Int) {
+    let masses = input
         .components(separatedBy: CharacterSet.newlines)
         .compactMap { Int($0) }
-        .compactMap(_fuel)
-        .reduce(0, +)
-}
 
-func day1b(_ input: String) -> Int {
-    return input
-        .components(separatedBy: CharacterSet.newlines)
-        .compactMap { Int($0) }
-        .compactMap(_fuel)
-        .map { sequence(first: $0, next:_fuel).reduce(0, +) }
-        .reduce(0, +)
+    return (
+        masses
+            .compactMap(_fuel)
+            .reduce(0, +),
+        masses
+            .compactMap(_fuel)
+            .map { sequence(first: $0, next:_fuel).reduce(0, +) }
+            .reduce(0, +))
 }
 
 private func _fuel(_ mass: Int) -> Int? {

@@ -9,9 +9,10 @@ class IntCode {
     private var i = 0
     private var mem: [Int]
     private var inputs = [Int]()
+    private var relBase = 0
 
     init(program: [Int]) {
-        mem = program
+        mem = program + Array(repeating: 0, count: 2048 - program.count)
     }
 
     func queueInput(_ input: Int) -> IntCode {
@@ -27,14 +28,15 @@ class IntCode {
             let ps = mem[i] / 100
             let params = { (p: Int) in pCount = p }
             switch opCode {
-            case 1: params(3); _write(2, _read(0, ps) + _read(1, ps))
-            case 2: params(3); _write(2, _read(0, ps) * _read(1, ps))
-            case 3: params(1); _write(0, inputs.removeFirst())
+            case 1: params(3); _write(2, ps, _read(0, ps) + _read(1, ps))
+            case 2: params(3); _write(2, ps, _read(0, ps) * _read(1, ps))
+            case 3: params(1); _write(0, ps, inputs.removeFirst())
             case 4: params(1); output = _read(0, ps)
             case 5: params(2); if _read(0, ps) != 0 { i = _read(1, ps); params(-1) }
             case 6: params(2); if _read(0, ps) == 0 { i = _read(1, ps); params(-1) }
-            case 7: params(3); _write(2, _read(0, ps)  < _read(1, ps) ? 1 : 0)
-            case 8: params(3); _write(2, _read(0, ps) == _read(1, ps) ? 1 : 0)
+            case 7: params(3); _write(2, ps, _read(0, ps)  < _read(1, ps) ? 1 : 0)
+            case 8: params(3); _write(2, ps, _read(0, ps) == _read(1, ps) ? 1 : 0)
+            case 9: params(1); relBase += _read(0, ps)
             default: fatalError()
             }
             i += (pCount + 1)
@@ -43,17 +45,25 @@ class IntCode {
         return output ?? mem[0]
     }
 
-    private func _write(_ parameter: Int, _ value: Int) {
-        mem[mem[i+parameter+1]] = value
+    private func _write(_ parameter: Int, _ parameters: Int, _ value: Int) {
+        switch _mode(parameter, parameters) {
+        case 0: mem[mem[i+1+parameter]] = value
+        case 2: mem[mem[i+1+parameter]+relBase] = value
+        default: fatalError()
+        }
     }
 
     private func _read(_ parameter: Int, _ parameters: Int) -> Int {
-        let div = (0..<parameter).reduce(1) { (c, i) -> Int in c * 10 }
-        let mode = (parameters / div) % 10
-        switch mode {
+        switch _mode(parameter, parameters) {
         case 0: return mem[mem[i+parameter+1]]
         case 1: return mem[i+parameter+1]
+        case 2: return mem[mem[i+1+parameter]+relBase]
         default: fatalError()
         }
+    }
+
+    private func _mode(_ parameter: Int, _ parameters: Int) -> Int {
+        let div = (0..<parameter).reduce(1) { (c, i) -> Int in c * 10 }
+        return (parameters / div) % 10
     }
 }

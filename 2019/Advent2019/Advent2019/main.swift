@@ -8,8 +8,8 @@ func run(day: Int, first: Bool, test: Bool) {
     let str = input(day, test)
     let any: Any
     switch day {
-    case 1:  any = first ? day1a(str) : day1b(str)
-    case 2:  any = first ? day2a(str) : day2b(str)
+    case 1:  any = day1(str)
+    case 2:  any = day2(str)
     case 3:  any = first ? day3a(str) : day3b(str)
     case 4:  any = first ? day4a(str) : day4b(str)
     case 5:  any = first ? day5a(str) : day5b(str)
@@ -23,7 +23,7 @@ func run(day: Int, first: Bool, test: Bool) {
     print(any)
 }
 
-let day = 7
+let day = 2
 
 //run(day: day, first: true, test: true)
 run(day: day, first: true, test: false)

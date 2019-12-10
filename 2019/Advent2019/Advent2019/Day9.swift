@@ -4,17 +4,17 @@
 import Foundation
 
 func day9a(_ input: String) -> Int {
-    _ = input
-        .components(separatedBy: CharacterSet.newlines)
+    let program = input
+        .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return 0
+    return  IntCode(program: program).queueInput(1).run()
 }
 
 func day9b(_ input: String) -> Int {
-    _ = input
-        .components(separatedBy: CharacterSet.newlines)
+    let program = input
+        .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return 0
+    return IntCode(program: program).queueInput(2).run()
 }
