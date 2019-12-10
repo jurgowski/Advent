@@ -3,8 +3,8 @@
 
 import Foundation
 
-func run(day: Int, first: Bool, test: Bool) {
-    print("Problem \(day) part \(first ? "a" : "b") \(test ? "(test)" : "")")
+func run(day: Int, test: Bool) {
+    print("Problem \(day) \(test ? "(test)" : "")")
     let str = input(day, test)
     let any: Any
     switch day {
@@ -24,13 +24,11 @@ func run(day: Int, first: Bool, test: Bool) {
     print(any)
 }
 
-let day = 9
+let day = 10
 
-//run(day: day, first: true, test: true)
-run(day: day, first: true, test: false)
+//run(day: day, test: true)
+run(day: day, test: false)
 
-//run(day: day, first: false, test: true)
-//run(day: day, first: false, test: false)
 
 
 
