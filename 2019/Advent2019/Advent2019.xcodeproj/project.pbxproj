@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC83F7DF239F4CE90002494E /* Day10.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC83F7DE239F4CE90002494E /* Day10.swift */; };
 		DC8DA9F0239499E4001A1FFB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DA9EF239499E4001A1FFB /* main.swift */; };
 		DC8DA9F723949A08001A1FFB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DA9F623949A08001A1FFB /* Helpers.swift */; };
 		DC8DA9FB23949ABB001A1FFB /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DA9FA23949ABB001A1FFB /* Day1.swift */; };
@@ -35,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		DC83F7DD239E0B9B0002494E /* 09.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 09.txt; sourceTree = "<group>"; };
+		DC83F7DE239F4CE90002494E /* Day10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day10.swift; sourceTree = "<group>"; };
+		DC83F7E0239F4D600002494E /* 10.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 10.txt; sourceTree = "<group>"; };
 		DC8DA9EC239499E4001A1FFB /* Advent2019 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Advent2019; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8DA9EF239499E4001A1FFB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DC8DA9F623949A08001A1FFB /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 				DC8DA9F623949A08001A1FFB /* Helpers.swift */,
 				DC8DA9EF239499E4001A1FFB /* main.swift */,
 				DCE5F1772398DCAF000A8B92 /* Intcode.swift */,
+				DC83F7DE239F4CE90002494E /* Day10.swift */,
 			);
 			path = Advent2019;
 			sourceTree = "<group>";
@@ -119,6 +123,7 @@
 				DCE5F17C239B67B5000A8B92 /* 07.txt */,
 				DCE5F17D239CC336000A8B92 /* 08.txt */,
 				DC83F7DD239E0B9B0002494E /* 09.txt */,
+				DC83F7E0239F4D600002494E /* 10.txt */,
 			);
 			name = Inputs;
 			path = ../Inputs;
@@ -188,6 +193,7 @@
 				DCE5F17023975D80000A8B92 /* Day8.swift in Sources */,
 				DCE5F17323975D80000A8B92 /* Day7.swift in Sources */,
 				DC8DA9FF2394CC25001A1FFB /* Day3.swift in Sources */,
+				DC83F7DF239F4CE90002494E /* Day10.swift in Sources */,
 				DCE5F1782398DCAF000A8B92 /* Intcode.swift in Sources */,
 				DC8DA9FD2394CBCE001A1FFB /* Day2.swift in Sources */,
 				DCE5F17223975D80000A8B92 /* Day9.swift in Sources */,

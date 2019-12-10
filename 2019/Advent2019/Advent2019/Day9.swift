@@ -3,18 +3,11 @@
 
 import Foundation
 
-func day9a(_ input: String) -> Int {
+func day9(_ input: String) -> (Int, Int) {
     let program = input
         .components(separatedBy: ",")
         .compactMap { Int($0) }
 
-    return  IntCode(program: program).queueInput(1).run()
-}
-
-func day9b(_ input: String) -> Int {
-    let program = input
-        .components(separatedBy: ",")
-        .compactMap { Int($0) }
-
-    return IntCode(program: program).queueInput(2).run()
+    return (IntCode(program: program).queueInput(1).run(),
+            IntCode(program: program).queueInput(2).run())
 }

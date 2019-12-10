@@ -3,24 +3,10 @@
 
 import Foundation
 
-func day8a(_ input: String) -> Int {
+func day8(_ input: String) -> Int {
     var digits = input.map{ String($0) }.compactMap { Int($0) }
 
-    var layers = [[[Int]]]()
-    while digits.count > 0 {
-        var rows = [[Int]]()
-        var row = [Int]()
-
-        while rows.count < 6 {
-            while row.count < 25 {
-                row.append(digits.removeFirst())
-            }
-            rows.append(row)
-            row = []
-        }
-        layers.append(rows)
-        rows = []
-    }
+    var layers = _convertToLayers(&digits)
     let lowerLayerIndex = layers
         .map { $0.reduce(0) { $0 + $1.reduce(0) { $0 + ($1 == 0 ? 1 : 0) }}}
         .enumerated()
@@ -31,27 +17,6 @@ func day8a(_ input: String) -> Int {
     var map = [Int: Int]()
     lowestLayer.forEach { $0.forEach { map[$0] = (map[$0] ?? 0) + 1 } }
 
-    return  map[1]! * map[2]!
-}
-
-func day8b(_ input: String) -> Int {
-    var digits = input.map{ String($0) }.compactMap { Int($0) }
-
-    var layers = [[[Int]]]()
-    while digits.count > 0 {
-        var rows = [[Int]]()
-        var row = [Int]()
-
-        while rows.count < 6 {
-            while row.count < 25 {
-                row.append(digits.removeFirst())
-            }
-            rows.append(row)
-            row = []
-        }
-        layers.append(rows)
-        rows = []
-    }
     layers.reverse()
     let finalLayer = layers.reduce(layers.first!) { (currentLayer, layer) -> [[Int]] in
         return zip(currentLayer, layer).map { rows -> [Int] in
@@ -62,7 +27,23 @@ func day8b(_ input: String) -> Int {
     }
 
     _print(grid: finalLayer)
-    return 0
+    return  map[1]! * map[2]!
+}
+
+func _convertToLayers(_ digits: inout [Int]) -> [[[Int]]] {
+    var layers = [[[Int]]]()
+    while digits.count > 0 {
+        var rows = [[Int]]()
+        while rows.count < 6 {
+            var row = [Int]()
+            while row.count < 25 {
+                row.append(digits.removeFirst())
+            }
+            rows.append(row)
+        }
+        layers.append(rows)
+    }
+    return layers
 }
 
 func _print(grid: [[Int]]) {
