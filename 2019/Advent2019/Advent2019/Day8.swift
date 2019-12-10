@@ -4,16 +4,16 @@
 import Foundation
 
 func day8(_ input: String) -> Int {
-    var digits = input.map{ String($0) }.compactMap { Int($0) }
+    var digits = input.compactMap { Int(String($0)) }
 
     var layers = _convertToLayers(&digits)
     let lowerLayerIndex = layers
         .map { $0.reduce(0) { $0 + $1.reduce(0) { $0 + ($1 == 0 ? 1 : 0) }}}
         .enumerated()
         .sorted { $0.1 < $1.1 }
-        .first!
+        .first!.0
 
-    let lowestLayer = layers[lowerLayerIndex.0]
+    let lowestLayer = layers[lowerLayerIndex]
     var map = [Int: Int]()
     lowestLayer.forEach { $0.forEach { map[$0] = (map[$0] ?? 0) + 1 } }
 

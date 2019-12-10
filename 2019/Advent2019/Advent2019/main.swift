@@ -24,7 +24,7 @@ func run(day: Int, test: Bool) {
     print(any)
 }
 
-let day = 10
+let day = 8
 
 //run(day: day, test: true)
 run(day: day, test: false)
