@@ -8,20 +8,13 @@ struct Point: Hashable {
     let y: Int
 }
 
-func day3a(_ input: String) -> Int {
+func day3(_ input: String) -> (Int, Int) {
     let wires = input.components(separatedBy: CharacterSet.newlines)
     let wireMap1 = _wireMap(wire: wires[0])
     let wireMap2 = _wireMap(wire: wires[1])
-    return Set(wireMap1.keys).intersection(Set(wireMap2.keys))
-        .map { abs($0.x) + abs($0.y) }.min() ?? 0
-}
-
-func day3b(_ input: String) -> Int {
-    let wires = input.components(separatedBy: CharacterSet.newlines)
-    let wireMap1 = _wireMap(wire: wires[0])
-    let wireMap2 = _wireMap(wire: wires[1])
-    return Set(wireMap1.keys).intersection(Set(wireMap2.keys))
-        .map { wireMap1[$0]! + wireMap2[$0]! }.min() ?? 0
+    let intersections = Set(wireMap1.keys).intersection(Set(wireMap2.keys))
+    return (intersections.map { abs($0.x) + abs($0.y) }.min() ?? 0,
+            intersections.map { wireMap1[$0]! + wireMap2[$0]! }.min() ?? 0)
 }
 
 private func _wireMap(wire: String) -> [Point:Int] {
