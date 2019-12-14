@@ -36,20 +36,6 @@ func day10(_ input: String) -> (Int, Int) {
         }
     }
 
-//    let polar1 = visiblePoints
-//            .map { return ($0, _polar2(start:bestPoint.key, goal:$0)) }
-//            .sorted { $0.1 < $1.1 }
-//
-//    let polar2 = visiblePoints
-//    .map { return ($0, _polar(start:bestPoint.key, goal:$0)) }
-//    .map { ($0.0, ($0.1 < -90 ? $0.1 + 360 : $0.1)) }
-//    .sorted { $0.1 < $1.1 }
-//
-//    print(bestPoint.key)
-//    for (i, point) in polar1.enumerated() {
-//        print("\(i) - \(point.0 == polar2[i].0) \(point.0) \(point.1) \(polar2[i].0) \(polar2[i].1)")
-//    }
-
     let polar = visiblePoints
         .map { return ($0, _polar(start:bestPoint.key, goal:$0)) }
         .map { ($0.0, ($0.1 < -90 ? $0.1 + 360 : $0.1)) }
@@ -81,15 +67,6 @@ private func _visible(_ map: [[String]], start: Point, goal: Point) -> Bool {
     }
     return true
 }
-
-//private func _polar2(start: Point, goal: Point) -> Double {
-//    let x = Double(goal.x - start.x)
-//    let y = Double(goal.y - start.y)
-//    let value = atan(y / x)
-//    return Measurement(value: value, unit: UnitAngle.radians)
-//    .converted(to: UnitAngle.degrees)
-//    .value
-//}
 
 private func _polar(start: Point, goal: Point) -> Double {
     let rectangularCoordinates = [Double(goal.x - start.x),
