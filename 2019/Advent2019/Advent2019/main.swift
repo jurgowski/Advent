@@ -28,9 +28,5 @@ func run(day: Int, test: Bool) {
     print(any)
 }
 
-run(day: 14, test: false)
-
-
-
-
+run(day: 12, test: false)
 

@@ -8,18 +8,6 @@ struct Point: Hashable {
     let y: Int
 }
 
-struct Position: Hashable {
-    let x: Int
-    let y: Int
-    let z: Int
-
-    public func add(other: Position) -> Position {
-        return Position(x:self.x + other.x,
-                        y:self.y + other.y,
-                        z:self.z + other.z)
-    }
-}
-
 enum Direction {
     case up
     case down
