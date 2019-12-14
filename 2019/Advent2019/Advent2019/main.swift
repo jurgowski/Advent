@@ -18,16 +18,17 @@ func run(day: Int, test: Bool) {
     case  8: any =  day8(str)
     case  9: any =  day9(str)
     case 10: any = day10(str)
+    case 11: any = day11(str)
+    case 12: any = day12(str)
+    case 13: any = day13(str)
+    case 14: any = day14(str)
     default: fatalError()
     }
 
     print(any)
 }
 
-let day = 8
-
-//run(day: day, test: true)
-run(day: day, test: false)
+run(day: 14, test: false)
 
 
 

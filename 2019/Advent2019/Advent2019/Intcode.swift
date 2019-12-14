@@ -9,10 +9,16 @@ class IntCode {
     private var i = 0
     private var mem: [Int]
     private var inputs = [Int]()
+    private var inputAsk: () -> Int
     private var relBase = 0
 
     init(program: [Int]) {
-        mem = program + Array(repeating: 0, count: 2048 - program.count)
+        mem = program + Array(repeating: 0, count: 3000 - program.count)
+        inputAsk = { fatalError() }
+    }
+
+    func inputer(_ inputs: @escaping () -> Int) {
+        inputAsk = inputs
     }
 
     func queueInput(_ input: Int) -> IntCode {
@@ -21,6 +27,7 @@ class IntCode {
     }
 
     func run() -> Int {
+        assert(!terminated)
         var pCount = -1
         var output: Int? = nil
         while mem[i] != 99 && output == nil {
@@ -29,8 +36,8 @@ class IntCode {
             switch mem[i] % 100 {
             case 1: params(3); _write(2, ps, _read(0, ps) + _read(1, ps))
             case 2: params(3); _write(2, ps, _read(0, ps) * _read(1, ps))
-            case 3: params(1); _write(0, ps, inputs.removeFirst())
-            case 4: params(1); output = _read(0, ps)
+            case 3: params(1); _write(0, ps, inputs.count == 0 ? inputAsk() : inputs.removeFirst())
+            case 4: params(1); output = _read(0, ps); //print("out \(output!)")
             case 5: params(2); if _read(0, ps) != 0 { i = _read(1, ps); params(-1) }
             case 6: params(2); if _read(0, ps) == 0 { i = _read(1, ps); params(-1) }
             case 7: params(3); _write(2, ps, _read(0, ps)  < _read(1, ps) ? 1 : 0)
@@ -41,6 +48,9 @@ class IntCode {
             i += (pCount + 1)
         }
         terminated = mem[i] == 99
+        if terminated {
+            print("Terminated!")
+        }
         return output ?? mem[0]
     }
 

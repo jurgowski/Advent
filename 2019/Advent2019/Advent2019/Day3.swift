@@ -3,11 +3,6 @@
 
 import Foundation
 
-struct Point: Hashable {
-    let x :Int
-    let y: Int
-}
-
 func day3(_ input: String) -> (Int, Int) {
     let wires = input.components(separatedBy: CharacterSet.newlines)
     let wireMap1 = _wireMap(wire: wires[0])
