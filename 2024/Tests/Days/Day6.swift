@@ -1,16 +1,16 @@
 import Testing
 
-struct Pos: Hashable {
+private struct Pos: Hashable {
     let x: Int
     let y: Int
 }
 
-struct DPos: Hashable {
+private struct DPos: Hashable {
     let pos: Pos
     let dir: Direction
 }
 
-enum Direction {
+private enum Direction {
     case n
     case s
     case w
