@@ -1,17 +1,9 @@
 import Testing
-
-private struct Pos: Hashable {
-    let x: Int
-    let y: Int
-}
+import Advent2024
 
 private struct Ant: Hashable {
     let pos: Pos
     let freq: String.Element
-}
-
-private func inside(pos: Pos, map: [[String.Element]]) -> Bool {
-    map.indices.contains(pos.y) && map[pos.y].indices.contains(pos.x)
 }
 
 private func part1(input: String) -> Int {
@@ -36,17 +28,17 @@ private func part1(input: String) -> Int {
                 let dx = abs(pos.x - x)
                 let dy = abs(pos.y - y)
                 [
-                    Pos(x: pos.x + (pos.x > x ? dx : -dx),
-                        y: pos.y - (pos.y < y ? dy : -dy)),
-                    Pos(x: x - (x < pos.x ? dx : -dx),
-                        y: y + (y > pos.y ? dy : -dy)),
+                    Pos(pos.x + (pos.x > x ? dx : -dx),
+                        pos.y - (pos.y < y ? dy : -dy)),
+                    Pos(x - (x < pos.x ? dx : -dx),
+                        y + (y > pos.y ? dy : -dy)),
                 ].forEach {
-                    if inside(pos: $0, map: map) {
+                    if $0.inside(map: map) {
                         antinodes.insert($0)
                     }
                 }
             }
-            ants.insert(Ant(pos: Pos(x:x, y:y), freq: freq))
+            ants.insert(Ant(pos: Pos(x, y), freq: freq))
         }
     }
     return antinodes.count
@@ -80,7 +72,7 @@ private func part2(input: String) -> Int {
                                     B: pos.x - x,
                                     C: pos.y * (x - pos.x) - (y - pos.y) * pos.x))
             }
-            ants.insert(Ant(pos: Pos(x:x, y:y), freq: freq))
+            ants.insert(Ant(pos: Pos(x, y), freq: freq))
         }
     }
     var antinodes = Set<Pos>()
@@ -88,7 +80,7 @@ private func part2(input: String) -> Int {
         for x in map[y].indices {
             for slope in slopes {
                 if slope.A * x + slope.B * y + slope.C == 0 {
-                    antinodes.insert(Pos(x: x, y: y))
+                    antinodes.insert(Pos(x, y))
                     break
                 }
             }

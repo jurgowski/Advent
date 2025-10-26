@@ -1,9 +1,5 @@
 import Testing
-
-private struct Pos: Hashable {
-    let x: Int
-    let y: Int
-}
+import Advent2024
 
 private struct DPos: Hashable {
     let pos: Pos
@@ -27,10 +23,10 @@ private enum Direction {
     
     func next(from: Pos) -> Pos {
         switch self {
-        case .n: return Pos(x: from.x, y: from.y - 1)
-        case .e: return Pos(x: from.x + 1, y: from.y)
-        case .s: return Pos(x: from.x, y: from.y + 1)
-        case .w: return Pos(x: from.x - 1, y: from.y)
+        case .n: return Pos(from.x, from.y - 1)
+        case .e: return Pos(from.x + 1, from.y)
+        case .s: return Pos(from.x, from.y + 1)
+        case .w: return Pos(from.x - 1, from.y)
         }
     }
 }
@@ -39,7 +35,7 @@ private func startingPosition(_ map: [[Substring.Element]]) -> Pos {
     for y in 0..<map.count {
         for x in 0..<map[y].count {
             if map[y][x] == "^" {
-                return Pos(x:x, y:y)
+                return Pos(x, y)
             }
         }
     }
