@@ -13,6 +13,15 @@ public enum Dir: Hashable {
         case .west: return .nort
         }
     }
+    
+    public var revRotate: Dir {
+        switch self {
+        case .nort: return .west
+        case .west: return .sout
+        case .sout: return .east
+        case .east: return .nort
+        }
+    }
 }
 
 public struct Pos: Hashable {
